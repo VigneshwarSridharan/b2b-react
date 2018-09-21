@@ -1,0 +1,38 @@
+@import './bootstrap/bootstrap.scss';
+@import './fonts.scss';
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #d7dbe0;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.svg-inline--fa {
+    vertical-align: middle;
+}
+
+.navbar {
+    .dropdown {
+        .dropdown-menu {
+            display: block;
+            visibility: hidden;
+            transform-origin: center ;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all .5s ease;
+        }
+        // .dropdown-menu.show,
+        &:hover .dropdown-menu{
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+    }
+}
