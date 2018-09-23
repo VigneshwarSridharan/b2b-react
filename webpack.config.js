@@ -78,5 +78,9 @@ module.exports = {
             }
         ]),
         new webpack.DefinePlugin(envKeys)
-    ]
+    ],
+    devServer: {
+        port: 4100,
+        historyApiFallback: true
+    },
 };

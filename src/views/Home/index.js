@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   HOME_PAGE_UNLOADED,
 } from '../../constants/actionTypes';
-import { Button } from '../bootstrap/';
+import { Button } from '../components/bootstrap/';
 
 const Promise = global.Promise;
 

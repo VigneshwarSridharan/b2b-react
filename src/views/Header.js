@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, NavbarBrand, Container, NavbarToggler, Collapse, Nav, NavItem, NavLink, DropdownToggle, DropdownMenu, DropdownItem } from './bootstrap';
-import { UncontrolledDropdown } from 'reactstrap';
+import { Navbar, NavbarBrand, Container, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from './components/bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import { APP_URL } from '../constants/actionTypes';
+import publicRoutes from '../router/index';
+import { Translate, getTranslate, getActiveLanguage } from 'react-localize-redux';
+import { connect } from 'react-redux';
 
 const style = {
     lgDropDown: {
@@ -14,12 +16,15 @@ const style = {
 
 
 const LoggedOutView = props => {
+    var common = publicRoutes.find(f => f.id == "your_trips");
+    console.log(common);
     if (!props.currentUser) {
         return (
             <Nav className="ml-auto align-items-center" navbar >
                 <NavItem>
                     <NavLink href="tel:+1-416-751-6000">+1-416-751-6000</NavLink>
                 </NavItem>
+
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav>
                         Recent Searches {' '} <FontAwesomeIcon icon={faAngleDown} size="xs" />
@@ -32,7 +37,7 @@ const LoggedOutView = props => {
                 </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav>
-                        <img src={APP_URL+'/assets/images/flags/1x1/in.svg'} height="24" className="rounded-circle px-2" alt="india"/>
+                        <img src={APP_URL + '/assets/images/flags/1x1/in.svg'} height="24" className="rounded-circle px-2" alt="india" />
                         <FontAwesomeIcon icon={faAngleDown} size="xs" />
                     </DropdownToggle>
                     <DropdownMenu right style={style.lgDropDown}>
@@ -53,21 +58,18 @@ const LoggedOutView = props => {
                 </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav>
-                        Your Trips <span className="px-1"><FontAwesomeIcon icon={faAngleDown} size="xs" /></span> <div className="profile-pic">G</div>
+                        { props.translate(common.name)} <span className="px-1"><FontAwesomeIcon icon={faAngleDown} size="xs" /></span> <div className="profile-pic">G</div>
                     </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
+                    <DropdownMenu right >
+                        {
+                            common.views.map((props, key) => {
+                                return (
+                                    <DropdownItem key={key}>
+                                        <Link to={props.path} className="nav-link">{props.name}</Link>
+                                    </DropdownItem>
+                                )
+                            })
+                        }
                     </DropdownMenu>
                 </UncontrolledDropdown>
             </Nav>
@@ -125,9 +127,9 @@ class Header extends React.Component {
                     </Link>
                     <NavbarToggler />
                     <Collapse isOpen={true} navbar>
-                        <LoggedOutView currentUser={this.props.currentUser} />
+                        <LoggedOutView currentUser={this.props.currentUser} translate={this.props.translate} />
 
-                        <LoggedInView currentUser={this.props.currentUser} />
+                        <LoggedInView currentUser={this.props.currentUser} translate={this.props.translate} />
 
                     </Collapse>
                 </Container>
@@ -148,4 +150,9 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+    translate: getTranslate(state.locale),
+    currentLanguage: getActiveLanguage(state.locale).code
+});
+
+export default connect(mapStateToProps)(Header);
