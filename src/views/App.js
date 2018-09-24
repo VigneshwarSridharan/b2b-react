@@ -1,5 +1,6 @@
 import agent from '../agent';
 import Header from './Header';
+import Footer from './Footer';
 import React from 'react';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
@@ -10,6 +11,7 @@ import Register from './Register';
 import { store } from '../store';
 import { push } from 'react-router-redux';
 import publicRoutes from '../router/index';
+import MobileAppPromo from './components/MobileAppPromo';
 
 const mapStateToProps = state => {
     return {
@@ -65,6 +67,8 @@ class App extends React.Component {
                             return <Route exact={prop.hasOwnProperty('exact') ? prop.exact : false} path={prop.path} component={prop.component} key={key} />;
                         })}
                     </Switch>
+                    <MobileAppPromo />
+                    <Footer />
                 </div>
             );
         }

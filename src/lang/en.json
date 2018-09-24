@@ -1,7 +1,6 @@
 {
-    "common": {
-        "navigation": {
-            "your_trips": "Your Trips"
-        }
+    "navigation": {
+        "your_trips": "Your Trips",
+        "recent_searches": "Recent Searches"
     }
 }

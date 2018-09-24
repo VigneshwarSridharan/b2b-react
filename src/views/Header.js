@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand, Container, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from './components/bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
-import { APP_URL } from '../constants/actionTypes';
+import { faAngleDown, faRupeeSign, faPhone, faAddressBook } from '@fortawesome/free-solid-svg-icons';
+import { APP_URL, CONTACT_NUMBER } from '../constants/actionTypes';
 import publicRoutes from '../router/index';
 import { Translate, getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
@@ -17,17 +17,15 @@ const style = {
 
 const LoggedOutView = props => {
     var common = publicRoutes.find(f => f.id == "your_trips");
-    console.log(common);
     if (!props.currentUser) {
         return (
             <Nav className="ml-auto align-items-center" navbar >
                 <NavItem>
-                    <NavLink href="tel:+1-416-751-6000">+1-416-751-6000</NavLink>
+                    <NavLink href="tel:+1-416-751-6000"><FontAwesomeIcon icon={faPhone} size="xs" flip="horizontal" /> {' '}{CONTACT_NUMBER}</NavLink>
                 </NavItem>
-
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav>
-                        Recent Searches {' '} <FontAwesomeIcon icon={faAngleDown} size="xs" />
+                        {props.translate('navigation.recent_searches')} {' '} <FontAwesomeIcon icon={faAngleDown} size="xs" />
                     </DropdownToggle>
                     <DropdownMenu right style={style.lgDropDown}>
                         <DropdownItem>

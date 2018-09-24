@@ -13,7 +13,7 @@ export default [
     {
         collapse: true,
         path: "/",
-        name: 'common.navigation.your_trips',
+        name: 'navigation.your_trips',
         id: 'your_trips',
         state: "openComponents",
         icon: 'Apps',

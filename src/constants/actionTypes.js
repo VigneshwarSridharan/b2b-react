@@ -1,6 +1,7 @@
 // Config
 
 export const APP_URL = process.env.API_URL;
+export const CONTACT_NUMBER = process.env.CONTACT_NUMBER;
 
 export const APP_LOAD = 'APP_LOAD';
 export const REDIRECT = 'REDIRECT';
