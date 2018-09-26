@@ -22,6 +22,13 @@
 @font-face {
     font-family: 'HKGrotesk';
     font-style: normal;
+    font-weight: 600;
+    src: local('HKGrotesk-SemiBold'), local('HKGrotesk-SemiBold'), url(../fonts/HKGrotesk/HKGrotesk-SemiBold.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'HKGrotesk';
+    font-style: normal;
     font-weight: 700;
     src: local('HKGrotesk Bold'), local('HKGrotesk-Bold'), url(../fonts/HKGrotesk/HKGrotesk-Bold.woff2) format('woff2');
 }

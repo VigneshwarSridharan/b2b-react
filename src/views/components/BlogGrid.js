@@ -2,6 +2,17 @@ import React from 'react';
 import { Container, Row, Col } from './bootstrap/';
 import moment from 'moment';
 import styled from 'styled-components';
+import { APP_NAME } from '../../constants/actionTypes';
+
+const Wrapper = styled.section`
+    padding: 80px 0 65px;
+    background-color: #fff;
+`;
+
+const Heading = styled.h2`
+    text-align: center;
+    margin-bottom: 60px;
+`;
 
 const Para = styled.p`
     color:  rgba(45, 45, 45, 1);
@@ -22,6 +33,10 @@ const Title = styled.h4`
     line-height: 42px;
 `;
 
+const Item = styled.div`
+    margin-bottom: 15px;
+`;
+
 const blogData = [
     {
         title: 'Enimad veniam lamco quisnostrd alito',
@@ -39,15 +54,15 @@ const blogData = [
 
 function BlogGrid(props) {
     return (
-        <section className="py-5">
+        <Wrapper>
             <Container>
-                <h2 className="text-center mb-5">Tripzumi Blog</h2>
+                <Heading >{APP_NAME} Blog</Heading>
                 <Row>
                     {
                         blogData.map((post, k) => {
                             return (
                                 <Col sm={6} key={k}>
-                                    <div className="shadow d-flex align-items-center">
+                                    <Item className="shadow d-flex align-items-center">
                                         <div className="post-banner">
                                             <img src={post.banner} alt="" />
                                         </div>
@@ -56,14 +71,14 @@ function BlogGrid(props) {
                                             <Title>{post.title}</Title>
                                             <Para>{post.description}</Para>
                                         </div>
-                                    </div>
+                                    </Item>
                                 </Col>
                             )
                         })
                     }
                 </Row>
             </Container>
-        </section>
+        </Wrapper>
     )
 }
 

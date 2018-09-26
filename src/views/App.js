@@ -12,6 +12,7 @@ import { store } from '../store';
 import { push } from 'react-router-redux';
 import publicRoutes from '../router/index';
 import MobileAppPromo from './components/MobileAppPromo';
+import './Library';
 
 const mapStateToProps = state => {
     return {

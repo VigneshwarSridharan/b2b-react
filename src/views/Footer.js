@@ -46,19 +46,19 @@ function Footer(props) {
                 <hr />
                 <Row>
                     <Col sm={4}>
-                        <p className="text-secondary mb-2">Member of</p>
+                        <p className="text-light-gray mb-2">Member of</p>
                         <div className="d-flex align-items-center">
                             <img src={APP_URL + '/assets/images/iata.png'} className="mr-3" />
                             <img src={APP_URL + '/assets/images/tico.png'} className="mr-3" />
                         </div>
                     </Col>
                     <Col sm={4}>
-                        <p className="text-secondary mb-2">We accpt</p>
+                        <p className="text-light-gray mb-2">We accpt</p>
                         <div className="d-flex align-items-center">
                             <img src={APP_URL + '/assets/images/support_cc.png'} className="mr-3" />
                         </div>
                     </Col>
-                    <Col sm={4} className="text-secondary">
+                    <Col sm={4} className="text-light-gray">
                         <p className="mb-2">Follow Us</p>
                         <ul className="d-flex align-items-center p-0 list-style-none">
                             {
